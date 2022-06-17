@@ -1,0 +1,85 @@
+
+@import "../node_modules/bootstrap/scss/functions";
+
+@import "./variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
+// 行動版
+$aside-width:280px;
+
+.sidebar{
+    width:$aside-width;
+    margin-left:-$aside-width;
+    transition: margin-left .25s;
+    position: fixed;
+    z-index:5;
+    top:0;
+    .sidebar-link{
+        color: $dark;
+        display: block;
+        text-decoration: none;
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+        &:hover {
+            background-color: rgba($primary, 0.16);
+           }
+    }
+    .sidebar-link.active {
+        position: relative;
+        color: $primary !important;
+        font-weight: bold;
+        background-color: rgba($primary, 0.16);
+        &::after {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 2px;
+         height: 100%;
+         width: 3px;
+         background: $primary;
+        }
+      }
+}
+
+.main{
+    width:100vw;
+    transition: margin-left .25s;
+}
+
+.sidebar-toggle{
+    .sidebar{
+        margin-left:0;
+    }
+    .menu-btn{
+        margin-left:$aside-width;
+        transition: margin-left .25s;
+    }
+}
+
+//桌機版
+@include media-breakpoint-up(lg) {
+    .sidebar{
+        width:$aside-width;
+        margin-left:0px;
+    }
+    
+    .main{
+        width:calc(100vw - #{$aside-width});
+        margin-left:$aside-width;
+        transition: margin-left .25s;
+    }
+    .sidebar-toggle{
+        .sidebar{
+            margin-left:-$aside-width;
+        }
+        .main{
+            width:100%;
+            margin-left:0;
+        }
+        .menu-btn{
+            margin-left:0;
+        }
+    }
+}
