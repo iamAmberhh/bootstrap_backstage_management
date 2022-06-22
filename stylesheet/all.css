@@ -12034,4 +12034,9 @@ fieldset:disabled .btn {
     margin-left: 0;
   }
 }
+
+.nav-link-hover:hover {
+  background-color: #6528e0;
+  color: white;
+}
 /*# sourceMappingURL=all.css.map */
